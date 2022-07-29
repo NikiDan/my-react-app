@@ -1,0 +1,9 @@
+.todoItems{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    align-items: center;
+}
+.DeleteButton{
+    margin-left: 10px !important;
+}

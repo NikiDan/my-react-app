@@ -1,0 +1,13 @@
+.mainPanel{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+.mainField{
+    width: 26vw !important;
+}
+.borderLine{
+    width: 35vw;
+    margin: 0;
+    margin-bottom: 15px;
+}
