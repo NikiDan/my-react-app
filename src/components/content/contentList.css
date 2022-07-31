@@ -1,9 +1,22 @@
-.todoItems{
+.todoItemsContainer{
     display: flex;
     justify-content: space-between;
     margin-bottom: 15px;
     align-items: center;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #000000;
 }
 .DeleteButton{
     margin-left: 10px !important;
+}
+.todoItem{
+    width: 100%;
+    border: 2px solid #000000;
+}
+.buttonContainer{
+    display: flex;
+    margin-left: 10px;
+}
+.dltEdtSaveBtn{
+    padding: 10px 0;
 }

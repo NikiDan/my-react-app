@@ -1,13 +1,16 @@
 .mainPanel{
     display: flex;
-    justify-content: space-between;
     margin-bottom: 15px;
+    border-bottom: 2px solid #000;
+    padding-bottom: 15px;
 }
 .mainField{
-    width: 26vw !important;
+    width: 100%;
+    margin-right: 10px !important;
 }
-.borderLine{
-    width: 35vw;
-    margin: 0;
-    margin-bottom: 15px;
+.todoForm{
+    margin-top: 20px;
+}
+.titleText{
+    margin-bottom: 10px;
 }

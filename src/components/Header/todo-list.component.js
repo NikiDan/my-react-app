@@ -42,7 +42,7 @@ const TodoListComponent = () => {
     }
 
     return (
-        <div>
+        <div className="todoForm">
             <h2 className="titleText">What do you want to do today ?</h2>
             <div className="mainPanel">
                 <TextField
@@ -52,13 +52,12 @@ const TodoListComponent = () => {
                     id="outlined-basic"
                     label="ToDo"/>
                 <Button className="AddButton"
-                        variant="contained"
+                        variant="outlined"
                         id="AddButton"
                         onClick={AddTodoItem}>
                     Add
                 </Button>
             </div>
-            <hr className="borderLine"></hr>
             <div>
                 {
                     todoItems.map((item, index) => <TodoItemComponent
