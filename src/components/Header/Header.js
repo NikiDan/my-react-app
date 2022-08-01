@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
 import {Button, TextField} from "@mui/material";
-import './todo.list.css';
-import TodoItemComponent from "../content/todo-Item.component";
+import './Header.css';
+import Content from "../Content/Content";
+import { nanoid } from 'nanoid'
 
-const TodoListComponent = () => {
+const Header = ({todoItems, setTodoItems}) => {
 
-    const [todoItems, setTodoItems] = useState([])
     const [newTodo, setNewTodo] = useState('')
 
     const updateTodo = (todoItems) => {
@@ -20,26 +20,44 @@ const TodoListComponent = () => {
         if (newTodo.length === 0) {
             console.log('Пустая строка')
         } else {
-            updateTodo([...todoItems, newTodo])
-            setNewTodo('');
+            setTodoItems(
+                [...todoItems, {
+                    id: nanoid(),
+                    title: newTodo,
+                    status: false
+                }]
+            )
+            setNewTodo('')
         }
     }
 
-    const deleteItem = (indexToDelete) => {
-        updateTodo(todoItems.filter((item, i) => i !== indexToDelete))
+    const deleteItem = (index) => {
+        let deleteTodo = [...todoItems].filter(item => item.index !== index)
+        setTodoItems(deleteTodo)
     }
 
-    const EditTodo = (indexToEdit, editName) => {
+    const EditTodo = (index, title) => {
         const editedTodos = todoItems.map((item, index) => {
-            if(index === indexToEdit) {
-                return editName
+            if(item.index === index) {
+                return title
             }
-            console.log(index)
-            console.log(indexToEdit)
             return item
         })
         updateTodo(editedTodos);
+        // setEdit(index)
+        // setValue(title)
     }
+
+    const statusTodo = (index) => {
+        let newStatus = [...todoItems].filter(item => {
+            if(item.index === index){
+                item.status = !item.status
+            }
+            return item
+        })
+            setTodoItems(newStatus)
+    }
+    console.log(todoItems)
 
     return (
         <div className="todoForm">
@@ -60,17 +78,17 @@ const TodoListComponent = () => {
             </div>
             <div>
                 {
-                    todoItems.map((item, index) => <TodoItemComponent
-                        item = {item}
+                    todoItems.map((item, index) => <Content
+                        item = {item.title}
                         key = {index}
-                        onDelete = {() => deleteItem(index)}
+                        statusTodo = {() => statusTodo(item.index)}
+                        onDelete = {() => deleteItem(item.index)}
                         onEdit = {(editTodo) => EditTodo(index, editTodo)}
                     />)
                 }
             </div>
-
         </div>
     );
 };
 
-export default TodoListComponent;
+export default Header;

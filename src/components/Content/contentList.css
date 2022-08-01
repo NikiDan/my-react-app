@@ -11,11 +11,20 @@
 }
 .todoItem{
     width: 100%;
-    border: 2px solid #000000;
+}
+.doneBtn{
+   margin: 0;
+}
+.lockBtn{
+    margin-right: 10px !important;
 }
 .buttonContainer{
     display: flex;
+    width: 100%;
+}
+.edtDltBtn{
     margin-left: 10px;
+    display: flex;
 }
 .dltEdtSaveBtn{
     padding: 10px 0;
