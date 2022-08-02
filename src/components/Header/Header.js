@@ -20,7 +20,7 @@ const Header = ({todoItems, setTodoItems}) => {
         if (newTodo.length === 0) {
             console.log('Пустая строка')
         } else {
-            updateTodo([...todoItems, {...newTodo, id:Date.now()}])
+            updateTodo([...todoItems, {...newTodo, id:nanoid()}])
             setNewTodo({title:''})
         }
     }
@@ -33,14 +33,16 @@ const Header = ({todoItems, setTodoItems}) => {
     const EditTodo = (indexToEdit, title) => {
         const editedTodos = todoItems.map((item, index) => {
             if(indexToEdit === index) {
-                return {title}
+                console.log(item)
+                return {
+                    title,
+                    id: item.id
+                }
             }
-            console.log(item)
             return item
         })
         updateTodo(editedTodos);
-        // setEdit(index)
-        // setValue(title)
+        console.log(editedTodos)
     }
 
     const statusTodo = (index) => {
@@ -50,7 +52,7 @@ const Header = ({todoItems, setTodoItems}) => {
             }
             return item
         })
-            setTodoItems(newStatus)
+        setTodoItems(newStatus)
     }
 
     return (
