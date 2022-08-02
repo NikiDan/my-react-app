@@ -6,13 +6,7 @@ import { nanoid } from 'nanoid'
 
 function App() {
 
-    const [todoItems, setTodoItems] = useState([
-        {
-            index: nanoid(),
-            title: 'Just to do',
-            status: false
-        }
-    ])
+    const [todoItems, setTodoItems] = useState([])
 
   return (
       <div className="App">

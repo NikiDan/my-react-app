@@ -27,7 +27,7 @@ const Content = ({item, onDelete, onEdit, statusTodo}) => {
         if (edit.length === 0) {
         }
         else {
-            onEdit(setEdit)
+            onEdit(edit)
         }
     }
 
@@ -41,7 +41,7 @@ const Content = ({item, onDelete, onEdit, statusTodo}) => {
                             className = "todoItem"
                             id="outlined-required"
                             label="Edit"
-                            value={item.title}
+                            value={edit}
                             onChange={changeTodoName}
                         />
                     </div>

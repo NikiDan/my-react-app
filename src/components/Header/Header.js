@@ -6,28 +6,22 @@ import { nanoid } from 'nanoid'
 
 const Header = ({todoItems, setTodoItems}) => {
 
-    const [newTodo, setNewTodo] = useState('')
+    const [newTodo, setNewTodo] = useState({title:''})
 
     const updateTodo = (todoItems) => {
         setTodoItems(todoItems);
     }
 
     const changeNewTodoName = (e) => {
-        setNewTodo(e.target.value)
+        setNewTodo({...newTodo, title: e.target.value})
     }
 
     const AddTodoItem = () => {
         if (newTodo.length === 0) {
             console.log('Пустая строка')
         } else {
-            setTodoItems(
-                [...todoItems, {
-                    id: nanoid(),
-                    title: newTodo,
-                    status: false
-                }]
-            )
-            setNewTodo('')
+            updateTodo([...todoItems, {...newTodo, id:Date.now()}])
+            setNewTodo({title:''})
         }
     }
 
@@ -36,11 +30,12 @@ const Header = ({todoItems, setTodoItems}) => {
         setTodoItems(deleteTodo)
     }
 
-    const EditTodo = (index, title) => {
+    const EditTodo = (indexToEdit, title) => {
         const editedTodos = todoItems.map((item, index) => {
-            if(item.index === index) {
-                return title
+            if(indexToEdit === index) {
+                return {title}
             }
+            console.log(item)
             return item
         })
         updateTodo(editedTodos);
@@ -57,7 +52,6 @@ const Header = ({todoItems, setTodoItems}) => {
         })
             setTodoItems(newStatus)
     }
-    console.log(todoItems)
 
     return (
         <div className="todoForm">
@@ -65,7 +59,7 @@ const Header = ({todoItems, setTodoItems}) => {
             <div className="mainPanel">
                 <TextField
                     className="mainField"
-                    value={newTodo}
+                    value={newTodo.title}
                     onChange={changeNewTodoName}
                     id="outlined-basic"
                     label="ToDo"/>
