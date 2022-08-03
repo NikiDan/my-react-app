@@ -20,7 +20,7 @@ const Header = ({todoItems, setTodoItems}) => {
         if (newTodo.length === 0) {
             console.log('Пустая строка')
         } else {
-            updateTodo([...todoItems, {...newTodo, id:nanoid()}])
+            updateTodo([...todoItems, {...newTodo, index:nanoid()}])
             setNewTodo({title:''})
         }
     }
@@ -33,7 +33,6 @@ const Header = ({todoItems, setTodoItems}) => {
     const EditTodo = (indexToEdit, title) => {
         const editedTodos = todoItems.map((item, index) => {
             if(indexToEdit === index) {
-                console.log(item)
                 return {
                     title,
                     id: item.id
@@ -42,17 +41,6 @@ const Header = ({todoItems, setTodoItems}) => {
             return item
         })
         updateTodo(editedTodos);
-        console.log(editedTodos)
-    }
-
-    const statusTodo = (index) => {
-        let newStatus = [...todoItems].filter(item => {
-            if(item.index === index){
-                item.status = !item.status
-            }
-            return item
-        })
-        setTodoItems(newStatus)
     }
 
     return (
@@ -77,7 +65,6 @@ const Header = ({todoItems, setTodoItems}) => {
                     todoItems.map((item, index) => <Content
                         item = {item.title}
                         key = {index}
-                        statusTodo = {() => statusTodo(item.index)}
                         onDelete = {() => deleteItem(item.index)}
                         onEdit = {(editTodo) => EditTodo(index, editTodo)}
                     />)

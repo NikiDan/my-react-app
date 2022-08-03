@@ -6,9 +6,9 @@ import EditIcon from '@mui/icons-material/Edit';
 import '../Header/Header.css'
 import './contentList.css'
 import CheckIcon from '@mui/icons-material/Check';
-import DoneAllIcon from '@mui/icons-material/DoneAll';
+import 'animate.css';
 
-const Content = ({item, onDelete, onEdit, statusTodo}) => {
+const Content = ({item, onDelete, onEdit}) => {
 
     const [isEditMode, setIsEditMode] = useState(null)
     const [edit, setEdit] = useState('')
@@ -32,10 +32,10 @@ const Content = ({item, onDelete, onEdit, statusTodo}) => {
     }
 
     return (
-        <div className="todoItemsContainer">
+        <div className = "todoItemsContainer animate__animated animate__backInUp">
             {
                 isEditMode ?
-                    <div className="buttonContainer">
+                    <div  className="buttonContainer">
                         <TextField
                             required
                             className = "todoItem"
@@ -44,16 +44,9 @@ const Content = ({item, onDelete, onEdit, statusTodo}) => {
                             value={edit}
                             onChange={changeTodoName}
                         />
-                    </div>
+                    </div >
                         :
                     <div className="buttonContainer">
-                        <Button variant="outlined"
-                                color = "success"
-                                className="lockBtn"
-                                onClick = {statusTodo}
-                        >
-                            <DoneAllIcon className="dltEdtSaveBtn doneBtn"/>
-                        </Button>
                         <TextField
                             disabled
                             className = "todoItem"
