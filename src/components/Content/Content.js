@@ -6,6 +6,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import '../Header/Header.css'
 import './contentList.css'
 import CheckIcon from '@mui/icons-material/Check';
+import Checkbox from '@mui/material/Checkbox';
 import 'animate.css';
 
 const Content = ({item, onDelete, onEdit}) => {
@@ -47,6 +48,7 @@ const Content = ({item, onDelete, onEdit}) => {
                     </div >
                         :
                     <div className="buttonContainer">
+                        <Checkbox className="success" color="success" />
                         <TextField
                             disabled
                             className = "todoItem"

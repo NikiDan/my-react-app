@@ -8,7 +8,8 @@ function App() {
 
   return (
       <div className="App">
-        <Header todoItems = {todoItems} setTodoItems = {setTodoItems}/>
+        <Header todoItems = {todoItems}
+                setTodoItems = {setTodoItems}/>
       </div>
   );
 }
